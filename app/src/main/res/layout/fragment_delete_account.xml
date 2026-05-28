@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_delete_account"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btn_back_delete_account"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_back_delete_account"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Hapus Akun Saya"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold" />
+
+    </RelativeLayout>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/toolbar_delete_account"
+        android:background="#22FFFFFF" />
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/divider_toolbar"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Warning text top -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Penghapusan akun bersifat permanen dan tidak dapat dibatalkan. Jika kamu menghapus akunmu, kamu akan kehilangan akses secara permanen ke akun, beserta semua informasi yang terkait – termasuk daftar tonton, riwayat tontonan, posisi pemutaran, dan konten lain yang spesifik untuk akunmu."
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.4">
+
+                <!-- The first sentence should be styled differently - handled in code -->
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Penghapusan akun bersifat permanen dan tidak dapat dibatalkan."
+                android:textColor="#FF6400"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginTop="4dp"
+                android:visibility="gone"
+                android:id="@+id/txt_warning_orange" />
+
+            <!-- Warning text combined using SpannableString set in code -->
+            <TextView
+                android:id="@+id/txt_warning_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.4"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:visibility="visible" />
+
+            <!-- Second paragraph -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingMultiplier="1.4"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:id="@+id/txt_privacy_info" />
+
+            <!-- Subscription section header -->
+            <TextView
+                android:id="@+id/txt_subscription_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="12dp"
+                android:text="Kamu memiliki Langganan Aktif."
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <!-- Subscription info card -->
+            <LinearLayout
+                android:id="@+id/card_subscription_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1B1C22"
+                android:padding="20dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone">
+
+                <!-- Plan name row with crown -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_crown"
+                        app:tint="#FF6400"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/txt_card_plan_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anggota Fan"
+                        android:textColor="#FF6400"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppinsbold" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#33FFFFFF" />
+
+                <!-- Billing type row -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ditagih Bulanan"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 39.000"
+                        android:textColor="#8E9297"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#33FFFFFF" />
+
+                <!-- Next billing date row -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Penagihan Berikutnya"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:id="@+id/txt_card_billing_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="02/06/26"
+                        android:textColor="#8E9297"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <!-- Cancel subscription button -->
+                <TextView
+                    android:id="@+id/btn_cancel_subscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Batalkan Langganan"
+                    android:textColor="#FF6400"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground" />
+
+            </LinearLayout>
+
+            <!-- Delete account button -->
+            <TextView
+                android:id="@+id/btn_proceed_delete"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_black_stroke_pill"
+                android:gravity="center"
+                android:text="Lanjutkan ke Penghapusan Akun"
+                android:textColor="#5E6267"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsbold"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <!-- Warning under button (when subscription active) -->
+            <TextView
+                android:id="@+id/txt_must_cancel_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Kamu harus membatalkan langganan untuk menghapus akunmu."
+                android:textColor="#8E9297"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppinsregular"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.3"
+                android:visibility="gone" />
+
+            <!-- Support link -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mengalami masalah? Hubungi "
+                    android:textColor="#8E9297"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular" />
+
+                <TextView
+                    android:id="@+id/btn_delete_support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dukungan Pelanggan"
+                    android:textColor="#FF6400"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

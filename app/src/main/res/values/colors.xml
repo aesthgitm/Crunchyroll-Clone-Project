@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Premium Anime Dark Theme Palette -->
+    <color name="bg_main">#111315</color>
+    <color name="bg_nav">#16181A</color>
+    <color name="bg_card">#1C1E22</color>
+    <color name="color_primary">#FF6D00</color> <!-- Glowing Orange -->
+    <color name="color_primary_dark">#E65100</color>
+    <color name="color_accent">#FF6D00</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8E9297</color>
+    <color name="text_hint">#5C5F62</color>
+    
+    <!-- Rating Gold -->
+    <color name="rating_gold">#FFC107</color>
+    
+    <!-- UI Accents -->
+    <color name="divider_line">#26282B</color>
+    <color name="badge_gray">#33363A</color>
+    
+    <!-- UAS Visual colors -->
+    <color name="crunchyroll_orange">#FF6400</color>
+    <color name="crunchyroll_gold">#FAB818</color>
+    <color name="tab_unselected_grey">#A0A0A0</color>
+    <color name="bottom_nav_bg">#0D0D0D</color>
+    <color name="background_black">#000000</color>
+    <color name="divider_grey">#1A1A1A</color>
+    <color name="button_orange_pressed">#CC5200</color>
+    <color name="button_gold_pressed">#C89313</color>
+    <color name="grey_text_disabled">#55575A</color>
+    
+    <!-- Auth Colors from LoginRegisterRelative -->
+    <color name="primary">#F47521</color>
+    <color name="secondary">#e3ae00</color>
+    <color name="accent">#888888</color>
+    <color name="checklist">#0F343F</color>
+</resources>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_download_quality"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btn_back_download_quality"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_back_download_quality"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Kualitas Unduhan"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold" />
+
+    </RelativeLayout>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider_dq_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/toolbar_download_quality"
+        android:background="#22FFFFFF" />
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/divider_dq_toolbar"
+        android:orientation="vertical">
+
+        <!-- Option: Tinggi -->
+        <RelativeLayout
+            android:id="@+id/row_quality_high"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:paddingHorizontal="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tinggi"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsbold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terbaik di kelas serat optik cepat"
+                    android:textColor="#8E9297"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/radio_high"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_radio_selected"
+                app:tint="#FF6400" />
+
+        </RelativeLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1E2026"
+            android:layout_marginHorizontal="20dp" />
+
+        <!-- Option: Sedang -->
+        <RelativeLayout
+            android:id="@+id/row_quality_medium"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:paddingHorizontal="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sedang"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsbold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilihan bagus untuk sebagian besar koneksi"
+                    android:textColor="#8E9297"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/radio_medium"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_radio_unselected"
+                app:tint="#8E9297" />
+
+        </RelativeLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1E2026"
+            android:layout_marginHorizontal="20dp" />
+
+        <!-- Option: Rendah -->
+        <RelativeLayout
+            android:id="@+id/row_quality_low"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:paddingHorizontal="20dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rendah"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsbold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baik jika ruang penyimpanan terbatas"
+                    android:textColor="#8E9297"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/radio_low"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_radio_unselected"
+                app:tint="#8E9297" />
+
+        </RelativeLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#22FFFFFF" />
+
+    </LinearLayout>
+
+</RelativeLayout>

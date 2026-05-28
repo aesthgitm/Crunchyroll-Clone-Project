@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">crunchyroll_pemvis_5</string>
+    <string name="syarat_ketentuan">
+    Dengan membuat akun, Anda menyetujui
+    <font color="#F47521">Syarat Penggunaan</font> dan
+    <font color="#F47521">Kebijakan Privasi</font> kami,
+    dan Anda mengonfirmasi bahwa usia Anda setidaknya 18 tahun.
+    </string>
+    <string name="semua_anime_favoritmu_semua_di_satu_tempat">Semua anime favoritmu. Semua di satu tempat.</string>
+    <string name="jelajahi_uji_coba">Jelajahi Uji Coba</string>
+    <string name="masuk">Masuk</string>
+    <string name="atau_buat_akun">atau Buat Akun</string>
+</resources>

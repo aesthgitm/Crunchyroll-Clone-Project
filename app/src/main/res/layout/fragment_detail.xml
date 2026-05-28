@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <!-- Scrollable Main Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detail_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_sticky_bar"
+        android:layout_alignParentTop="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Banner Header Container -->
+            <RelativeLayout
+                android:id="@+id/detail_banner_container"
+                android:layout_width="match_parent"
+                android:layout_height="320dp">
+
+                <!-- Collapsible Header Banner Placeholder -->
+                <ImageView
+                    android:id="@+id/detail_banner_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_banner"
+                    android:contentDescription="Anime Banner Background" />
+
+                <!-- Text Overlay Content on Banner -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:paddingBottom="24dp"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp">
+
+                    <!-- Anime Logo text -->
+                    <TextView
+                        android:id="@+id/detail_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="JUJUTSU KAISEN"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <!-- Subtitle -->
+                    <TextView
+                        android:id="@+id/detail_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detail_title"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="— THE CULLING GAME Part 1 —"
+                        android:textColor="@color/color_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Detailed info Container below banner -->
+            <RelativeLayout
+                android:id="@+id/detail_info_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detail_banner_container"
+                android:paddingBottom="20dp"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp">
+
+                <!-- Metadata badges -->
+                <LinearLayout
+                    android:id="@+id/badge_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <!-- Age Badge -->
+                    <TextView
+                        android:id="@+id/badge_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/badge_background"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="6dp"
+                        android:paddingStart="6dp"
+                        android:paddingTop="3dp"
+                        android:text="16+"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <!-- Dubbing / Subtitle badge -->
+                    <TextView
+                        android:id="@+id/badge_dub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/badge_background"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="3dp"
+                        android:text="Sulih Suara | Takarir"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Rating Section -->
+                <RelativeLayout
+                    android:id="@+id/rating_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/badge_row"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/stars_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/rating_gold" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/rating_gold" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/rating_gold" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/rating_gold" />
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/rating_gold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/rating_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_toEndOf="@id/stars_container"
+                        android:text="Rata-rata: 4.9 (785R)"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <!-- Actions (Daftar Saya, Bagikan) -->
+                <LinearLayout
+                    android:id="@+id/actions_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rating_row"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <!-- Daftar Saya Button -->
+                    <LinearLayout
+                        android:id="@+id/btn_add_to_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_add"
+                            android:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Daftar Saya"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Bagikan Button -->
+                    <LinearLayout
+                        android:id="@+id/btn_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_share"
+                            android:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Bagikan"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Synopsis Text Description -->
+                <TextView
+                    android:id="@+id/detail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/actions_row"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="Although born with tremendous power, Itadori Yuji lives a completely ordinary life. One day, to save a classmate, he eats a cursed finger, and now Ryomen Sukuna lives in It..."
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/info_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/detail_description"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/divider_line" />
+
+                <!-- Tabs (Episode, Lainnya Seperti Ini) -->
+                <RelativeLayout
+                    android:id="@+id/tabs_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/info_divider">
+
+                    <TextView
+                        android:id="@+id/tab_episodes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="Episode"
+                        android:textColor="@color/color_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Active tab orange line underline -->
+                    <View
+                        android:layout_width="56dp"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/color_primary" />
+
+                </RelativeLayout>
+
+                <!-- Filter Season Spinner Header Container -->
+                <RelativeLayout
+                    android:id="@+id/season_spinner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tabs_container"
+                    android:layout_marginTop="12dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp">
+
+                    <!-- Filter Line -->
+                    <ImageView
+                        android:id="@+id/btn_sort_episodes"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_sort"
+                        android:tint="@color/text_secondary" />
+
+                    <LinearLayout
+                        android:id="@+id/episode_order_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/btn_sort_episodes"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btn_order_latest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Terbaru"
+                            android:textColor="@color/color_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn_order_oldest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="Terlama"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Episode download button -->
+                    <TextView
+                        android:id="@+id/btn_download_all_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/btn_download_all_icon"
+                        android:text="Unduh Semua"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btn_download_all_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_download"
+                        android:tint="@color/white" />
+
+                </RelativeLayout>
+
+                <!-- Episode Recyclerview List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_episodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/season_spinner_container"
+                    android:layout_marginTop="8dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- Divider -->
+                <View
+                    android:id="@+id/reviews_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/rv_episodes"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/divider_line" />
+
+                <!-- Reviews Title Header -->
+                <TextView
+                    android:id="@+id/txt_reviews_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reviews_divider"
+                    android:layout_marginTop="16dp"
+                    android:text="Ulasan &amp; Komentar"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Write a Review Container -->
+                <LinearLayout
+                    android:id="@+id/write_review_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_reviews_header"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/search_bar_background"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bagikan pendapat Anda"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Rating Selector -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating:"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+
+                        <RatingBar
+                            android:id="@+id/rating_bar_review"
+                            style="?android:attr/ratingBarStyleIndicator"
+                            android:isIndicator="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:numStars="5"
+                            android:stepSize="1.0"
+                            android:progressTint="@color/color_primary"
+                            android:progressBackgroundTint="@color/grey_text_disabled"
+                            android:scaleX="0.8"
+                            android:scaleY="0.8"
+                            android:transformPivotX="0dp"
+                            android:rating="5.0" />
+                    </LinearLayout>
+
+                    <!-- Comment Input -->
+                    <EditText
+                        android:id="@+id/edt_review_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/search_bar_background"
+                        android:hint="Tulis komentar/ulasan di sini..."
+                        android:textColorHint="@color/grey_text_disabled"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:padding="10dp"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine" />
+
+                    <!-- Submit Button -->
+                    <Button
+                        android:id="@+id/btn_submit_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/btn_orange_pill"
+                        android:text="Kirim Ulasan"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp" />
+
+                </LinearLayout>
+
+                <!-- Reviews Recyclerview List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_reviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/write_review_container"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:nestedScrollingEnabled="false" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Top Sticky Floating Toolbar Bar -->
+    <RelativeLayout
+        android:id="@+id/detail_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent">
+
+        <!-- Back Button (Arrow or X shape) -->
+        <ImageView
+            android:id="@+id/btn_detail_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/white"
+            android:contentDescription="Go Back" />
+
+        <!-- Overflow options button on right -->
+        <ImageView
+            android:id="@+id/btn_detail_more"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_more"
+            android:tint="@color/white"
+            android:contentDescription="More Options" />
+
+        <!-- Cast TV button -->
+        <ImageView
+            android:id="@+id/btn_detail_cast"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/btn_detail_more"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_cast"
+            android:tint="@color/white"
+            android:contentDescription="Screencast" />
+
+    </RelativeLayout>
+
+    <!-- Bottom Sticky Action Play Bar -->
+    <RelativeLayout
+        android:id="@+id/bottom_sticky_bar"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_nav"
+        android:paddingBottom="12dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp">
+
+        <!-- Resume Play Button (Orange Capsule) -->
+        <RelativeLayout
+            android:id="@+id/btn_resume_episode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@+id/btn_detail_bookmark_sticky"
+            android:background="@drawable/btn_primary"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_play"
+                    android:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Lanjutkan E1"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Save Circular Bordered Bookmark button -->
+        <ImageView
+            android:id="@+id/btn_detail_bookmark_sticky"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_circle_bookmark"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_bookmark"
+            android:tint="@color/color_primary"
+            android:contentDescription="Bookmark Anime" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

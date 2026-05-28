@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "832705187860",
+    "project_id": "crunchyroll-pemvis-5",
+    "storage_bucket": "crunchyroll-pemvis-5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832705187860:android:d35a7d35215a49c72e5701",
+        "android_client_info": {
+          "package_name": "com.example.crunchyroll_pemvis_5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVMYVEYCQUW-W48KJ7Vd3qEV3EbBoJZW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:id="@+id/sub_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btn_sub_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_sub_back"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Kelola Langganan"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold" />
+
+    </RelativeLayout>
+
+    <!-- Custom Tabs Section -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/sub_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_below="@id/sub_toolbar"
+        android:background="#111315"
+        app:tabIndicatorColor="#FF6400"
+        app:tabIndicatorHeight="2dp"
+        app:tabRippleColor="@android:color/transparent" />
+
+    <!-- View under Tabs -->
+    <View
+        android:id="@+id/sub_tab_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#3E4043"
+        android:layout_below="@id/sub_tab_layout" />
+
+    <!-- Dot Indicators (under tabs) -->
+    <LinearLayout
+        android:id="@+id/sub_indicator_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sub_tab_divider"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/sub_indicator_1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/badge_background"
+            android:layout_marginEnd="6dp" />
+
+        <View
+            android:id="@+id/sub_indicator_2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/badge_background"
+            android:backgroundTint="#8E9297" />
+
+    </LinearLayout>
+
+    <!-- Swiping Plans ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/sub_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sub_indicator_container"
+        android:layout_above="@+id/layout_bottom_cta"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+    <!-- Bottom CTA area -->
+    <RelativeLayout
+        android:id="@+id/layout_bottom_cta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="24dp">
+
+        <!-- Google Play Info Text -->
+        <TextView
+            android:id="@+id/txt_google_play_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Pengaturan langganan lebih tersedia melalui Google Play."
+            android:textColor="#8E9297"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:fontFamily="@font/poppinsregular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Gold Upgrade Button -->
+        <LinearLayout
+            android:id="@+id/btn_upgrade"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@id/txt_google_play_info"
+            android:background="@drawable/btn_gold_pill"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_crown"
+                app:tint="@color/black"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tingkatkan Langganan"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppinsbold" />
+        </LinearLayout>
+
+        <!-- Muted Cancel Button (Alternative state) -->
+        <TextView
+            android:id="@+id/btn_cancel_subscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_google_play_info"
+            android:layout_centerHorizontal="true"
+            android:paddingVertical="12dp"
+            android:text="Batalkan Langganan"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinsbold"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

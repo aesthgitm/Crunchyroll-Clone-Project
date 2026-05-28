@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_change_email"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btn_back_change_email"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_back_change_email"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Ubah Email"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold" />
+
+    </RelativeLayout>
+
+    <!-- Scrollable Content to prevent screen overflow -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_change_email"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- Current Email Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat Email Saat Ini"
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/txt_current_email_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kemayoranvhatlast14@gmail.com"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="4dp"
+                android:gravity="center" />
+
+            <!-- Mascot Image -->
+            <ImageView
+                android:id="@+id/img_mascot_laptop"
+                android:layout_width="220dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/hime_laptop"
+                android:scaleType="fitCenter" />
+
+            <!-- Header Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubah Alamat Email Akunmu"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="24dp"
+                android:gravity="center" />
+
+            <!-- Description Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Klik tombol di bawah ini untuk mengubah alamat email yang digunakan untuk masuk dan menerima komunikasi dari Crunchyroll."
+                android:textColor="#8E9297"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingHorizontal="16dp" />
+
+            <!-- Orange Button -->
+            <TextView
+                android:id="@+id/btn_trigger_change_email"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/btn_orange_pill"
+                android:gravity="center"
+                android:text="Ubah Alamat Email"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="32dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Support Footer -->
+            <LinearLayout
+                android:id="@+id/btn_email_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mengalami masalah? "
+                    android:textColor="#8E9297"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dapatkan Bantuan"
+                    android:textColor="#FF6400"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsbold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

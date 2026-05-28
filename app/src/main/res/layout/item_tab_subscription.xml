@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingVertical="4dp">
+
+    <TextView
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tab Title"
+        android:textColor="#8E9297"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppinsbold" />
+
+    <TextView
+        android:id="@+id/tab_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PENAWARAN TERSEDIA"
+        android:textColor="#FF6400"
+        android:textSize="9sp"
+        android:fontFamily="@font/poppinsbold"
+        android:visibility="gone"
+        android:layout_marginTop="2dp" />
+
+</LinearLayout>

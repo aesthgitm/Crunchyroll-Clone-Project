@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_bar_background"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Username -->
+        <TextView
+            android:id="@+id/txt_review_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Pengguna"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Rating Stars -->
+        <TextView
+            android:id="@+id/txt_review_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="⭐ 5.0"
+            android:textColor="@color/color_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- Review Comment -->
+    <TextView
+        android:id="@+id/txt_review_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Isi komentar ulasan anime di sini..."
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <!-- Date/Timestamp -->
+    <TextView
+        android:id="@+id/txt_review_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="4dp"
+        android:text="28 Mei 2026"
+        android:textColor="@color/grey_text_disabled"
+        android:textSize="11sp" />
+
+</LinearLayout>

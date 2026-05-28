@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_privacy_dsns"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/btn_back_privacy_dsns"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_back_privacy_dsns"
+            android:layout_toStartOf="@+id/space_end"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Jangan Jual/Bagikan Info Pribadi Saya"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppinsbold"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <View
+            android:id="@+id/space_end"
+            android:layout_width="8dp"
+            android:layout_height="1dp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider_privacy_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/toolbar_privacy_dsns"
+        android:background="#22FFFFFF" />
+
+    <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/divider_privacy_toolbar"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Paragraph 1 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crunchyroll, LLC may share certain information about you with third parties for targeted advertising purposes that might be classified as a &quot;sale&quot; or &quot;sharing&quot; under certain US state privacy laws. The information shared includes: identifiers, commercial information, internet or other electronic network activity information, and inferences about you."
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.5" />
+
+            <!-- Paragraph 2 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="You may opt out of such sale or sharing by visiting our "
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.5" />
+
+            <!-- Privacy Center link row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="-8dp">
+
+                <TextView
+                    android:id="@+id/link_privacy_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Center"
+                    android:textColor="#FF6400"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" or clicking the link below."
+                    android:textColor="#8E9297"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppinsregular" />
+            </LinearLayout>
+
+            <!-- Paragraph 3 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Please note that your opt-out preference will be maintained and associated with the user account you are currently logged in to. However, if you log out, or login from a different browser or device, we will not be able to connect that opt-out to your account and you may need to opt out again."
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.5" />
+
+            <!-- Paragraph 4 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="For more information about our data practices, please visit our "
+                android:textColor="#8E9297"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsregular"
+                android:lineSpacingMultiplier="1.5" />
+
+            <!-- Privacy Policy link -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="-8dp">
+
+                <TextView
+                    android:id="@+id/link_privacy_policy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy"
+                    android:textColor="#FF6400"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="."
+                    android:textColor="#8E9297"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppinsregular" />
+            </LinearLayout>
+
+            <!-- Opt-out toggle button -->
+            <TextView
+                android:id="@+id/btn_opt_out_sale"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_orange_pill"
+                android:gravity="center"
+                android:text="Opt Out of Sale/Sharing"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppinsbold"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

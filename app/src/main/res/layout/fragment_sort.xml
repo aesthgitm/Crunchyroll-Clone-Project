@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Header Bar -->
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- Close Button -->
+        <ImageView
+            android:id="@+id/btn_close_sort"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@drawable/icon_close"
+            android:contentDescription="Close"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_close_sort"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Urutkan"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Main Content Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_bar"
+        android:layout_above="@id/btn_update_sort"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="URUTKAN"
+            android:textColor="#8E9297"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppinsbold"
+            android:layout_marginBottom="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Popularitas Option -->
+            <RadioButton
+                android:id="@+id/radio_popularity"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Popularitas"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppinsregular"
+                android:buttonTint="#FF6400"
+                android:checked="true"
+                android:paddingStart="12dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Terbaru Option -->
+            <RadioButton
+                android:id="@+id/radio_newest"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Terbaru"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppinsregular"
+                android:buttonTint="#FF6400"
+                android:paddingStart="12dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Alfabetis Option -->
+            <RadioButton
+                android:id="@+id/radio_alphabetical"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Alfabetis"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppinsregular"
+                android:buttonTint="#FF6400"
+                android:paddingStart="12dp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Bottom Update Button -->
+    <TextView
+        android:id="@+id/btn_update_sort"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_outline_pill"
+        android:text="Perbarui urutan"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="12dp">
+
+    <!-- Card Container -->
+    <RelativeLayout
+        android:id="@+id/card_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_card_premium_gold"
+        android:padding="20dp">
+
+        <!-- Mascot image -->
+        <ImageView
+            android:id="@+id/img_mascot"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/hime_premium"
+            android:contentDescription="Mascot" />
+
+        <!-- Plan Title -->
+        <TextView
+            android:id="@+id/txt_plan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_mascot"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="MEGA FAN"
+            android:textColor="#FAB818"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppinsbold" />
+
+        <!-- Price Layout -->
+        <LinearLayout
+            android:id="@+id/layout_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_plan_title"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Strike-through old price & current price -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_old_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 235.000"
+                    android:textColor="#55FFFFFF"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txt_new_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="Rp 180.000/yr for 1 years"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/poppinsbold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Divider Line -->
+        <View
+            android:id="@+id/price_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#3E4043"
+            android:layout_below="@id/layout_price"
+            android:layout_marginTop="16dp" />
+
+        <!-- Features Scroll/List -->
+        <LinearLayout
+            android:id="@+id/layout_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_divider"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <!-- Feature 1 -->
+            <LinearLayout
+                android:id="@+id/row_feat1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat1"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanpa iklan"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+            <!-- Feature 2 -->
+            <LinearLayout
+                android:id="@+id/row_feat2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Akses tak terbatas ke perpustakaan Crunchyroll"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+            <!-- Feature 3 -->
+            <LinearLayout
+                android:id="@+id/row_feat3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat3"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Episode baru segera tayang setelah disiarkan di Jepang"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+            <!-- Feature 4 -->
+            <LinearLayout
+                android:id="@+id/row_feat4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat4"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Streaming di 4 perangkat"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+            <!-- Feature 5 -->
+            <LinearLayout
+                android:id="@+id/row_feat5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat5"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Menonton Offline"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+            <!-- Feature 6 -->
+            <LinearLayout
+                android:id="@+id/row_feat6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp">
+                <TextView
+                    android:id="@+id/status_feat6"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="✓"
+                    android:textColor="#FAB818"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lbl_feat6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Akses Crunchyroll Game Vault, katalog game gratis"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppinsregular"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Top Badge (Promo Tag) -->
+    <TextView
+        android:id="@+id/txt_promo_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FAB818"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:text="1 TAHUN PROMO"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:fontFamily="@font/poppinsbold"
+        android:textStyle="bold"
+        android:elevation="4dp" />
+
+</RelativeLayout>

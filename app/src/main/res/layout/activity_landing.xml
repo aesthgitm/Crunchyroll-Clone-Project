@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".LandingActivity">
+
+    <!-- Background -->
+    <ImageView
+        android:id="@+id/bganime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:src="@drawable/gambar2"
+        android:scaleType="centerCrop"/>
+
+    <!-- Gradient Overlay at bottom for readable text -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"/>
+
+    <!-- Bottom Container holding elements -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/gambar1"
+            android:scaleType="fitCenter"/>
+
+        <!-- Tagline -->
+        <TextView
+            android:id="@+id/tagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua anime favoritmu. Semua di satu tempat."
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Button Daftar -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnjelajahiujicoba"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Daftar"
+            android:background="@drawable/btn_gold_pill"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Button Masuk -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnlogin"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Masuk"
+            android:background="@drawable/btn_black_stroke_pill"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="15sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

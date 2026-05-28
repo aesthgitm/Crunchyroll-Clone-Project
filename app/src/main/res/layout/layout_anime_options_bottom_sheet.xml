@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_bg"
+    android:padding="20dp">
+
+    <!-- Option 1: Tambahkan ke Daftar Tonton -->
+    <TextView
+        android:id="@+id/option_add_watchlist"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Tambahkan ke Daftar Tonton"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Option 2: Tonton Sekarang -->
+    <TextView
+        android:id="@+id/option_watch_now"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Tonton Sekarang"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Option 3: Bagikan -->
+    <TextView
+        android:id="@+id/option_share"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Bagikan"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Option 4: Tandai sebagai Sudah Ditonton -->
+    <TextView
+        android:id="@+id/option_mark_watched"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Tandai sebagai Sudah Ditonton"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppinsregular"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

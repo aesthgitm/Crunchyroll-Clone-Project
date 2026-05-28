@@ -1,0 +1,38 @@
+# Tasks
+
+- `[x]` Configure click listeners in `TabContentFragment.kt` for tab positions:
+  - `[x]` Watchlist (position 0) -> Select Telusuri tab
+  - `[x]` History (position 2) -> Select Telusuri tab
+  - `[x]` Crunchylist (position 1) -> Navigate to CreateCrunchylistFragment
+  - `[x]` Downloads (position 3) -> Navigate to SubscriptionFragment
+- `[x]` Implement CreateCrunchylistFragment:
+  - `[x]` Create `fragment_create_crunchylist.xml`
+  - `[x]` Create `CreateCrunchylistFragment.kt`
+- `[x]` Implement Kelola Langganan (SubscriptionFragment):
+  - `[x]` Create `fragment_subscription.xml`
+  - `[x]` Create `SubscriptionFragment.kt`
+  - `[x]` Create `SubscriptionPlanAdapter.kt`
+  - `[x]` Define mock subscription plans data
+- `[x]` Dynamically display created Crunchylists in Crunchylist tab RecyclerView
+- `[x]` Implement mock subscription billing form flow (SubscriptionFormFragment)
+- `[x]` Implement Profile System (Tab Akun):
+  - `[x]` Create `bg_profile_gradient.xml`
+  - `[x]` Create consolidated `fragment_profile.xml` with advanced settings embedded
+  - `[x]` Update `ProfileFragment.kt` to bind all settings (cellular data switches, mock dialog actions) and bottom logout button
+- `[x]` Implement Beralih Profil:
+  - `[x]` Create `fragment_switch_profile.xml`
+  - `[x]` Create `SwitchProfileFragment.kt`
+- `[x]` Implement Edit Profil:
+  - `[x]` Create `fragment_edit_profile.xml`
+  - `[x]` Create `EditProfileFragment.kt`
+- `[x]` Implement Pembatasan Konten:
+  - `[x]` Create `fragment_content_restriction.xml`
+  - `[x]` Create `ContentRestrictionFragment.kt`
+- `[x]` Implement 5 New Mockup Screens:
+  - `[x]` Change Email Screen (`ChangeEmailFragment`)
+  - `[x]` Membership Plan Screen (`MembershipPlanFragment`)
+  - `[x]` Audio Language Selection Screen (`AudioLanguageFragment`)
+  - `[x]` Audio Description Switch Screen (`AudioDescriptionFragment`)
+  - `[x]` Subtitle Language Selection Screen (`SubtitleLanguageFragment`)
+- `[x]` Verify with Gradle compilation
+- `[x]` Create walkthrough.md

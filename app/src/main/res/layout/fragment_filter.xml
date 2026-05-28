@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111315"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Header Bar -->
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- Close Button -->
+        <ImageView
+            android:id="@+id/btn_close_filter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@drawable/icon_close"
+            android:contentDescription="Close"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_close_filter"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Filter"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Scrollable content for filter options -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_bar"
+        android:layout_above="@id/btn_update_filter"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Section 1: TAMPILKAN -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TAMPILKAN"
+                android:textColor="#8E9297"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginBottom="16dp"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_show_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Semua"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:checked="true"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radio_show_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Seri"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radio_show_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Film"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:paddingStart="12dp"/>
+            </RadioGroup>
+
+            <!-- Divider line -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#33FFFFFF"
+                android:layout_marginVertical="24dp"/>
+
+            <!-- Section 2: BAHASA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BAHASA"
+                android:textColor="#8E9297"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginBottom="16dp"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_lang_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Semua"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:checked="true"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radio_lang_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Dengan Takarir"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:paddingStart="12dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/radio_lang_dub"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Dengan Sulih Suara"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:buttonTint="#FF6400"
+                    android:paddingStart="12dp"/>
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Update Button -->
+    <TextView
+        android:id="@+id/btn_update_filter"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_outline_pill"
+        android:text="Perbarui filter"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</RelativeLayout>

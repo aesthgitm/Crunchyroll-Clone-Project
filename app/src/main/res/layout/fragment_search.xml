@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <!-- Custom Search Toolbar Bar -->
+    <RelativeLayout
+        android:id="@+id/search_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/bg_nav"
+        android:paddingEnd="16dp"
+        android:paddingStart="12dp">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/btn_search_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/white"
+            android:contentDescription="Go Back" />
+
+        <!-- Search Input Field Container -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/btn_search_back"
+            android:background="@drawable/search_bar_background"
+            android:paddingEnd="8dp"
+            android:paddingStart="12dp">
+
+            <!-- Search Icon (inside bar) -->
+            <ImageView
+                android:id="@+id/img_search_bar_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_search"
+                android:tint="@color/text_hint" />
+
+            <!-- Input EditText -->
+            <EditText
+                android:id="@+id/txt_search_query"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/img_search_bar_icon"
+                android:layout_toStartOf="@+id/btn_search_clear"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:hint="Cari anime..."
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_hint"
+                android:textSize="14sp"
+                android:imeOptions="actionSearch"
+                android:textCursorDrawable="@null" />
+
+            <!-- Clear input X button -->
+            <ImageView
+                android:id="@+id/btn_search_clear"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close"
+                android:tint="@color/text_secondary"
+                android:visibility="gone"
+                android:contentDescription="Clear Text" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- Empty/Initial State Container -->
+    <RelativeLayout
+        android:id="@+id/layout_search_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_toolbar"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txt_search_empty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Cari"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_search_empty_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="Masukkan kata kunci untuk mencari anime favorit Anda"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <!-- Search Results Grid Recyclerview -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_toolbar"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
