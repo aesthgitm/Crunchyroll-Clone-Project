@@ -7,14 +7,12 @@
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Header Toolbar -->
     <RelativeLayout
         android:id="@+id/genre_toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:paddingHorizontal="16dp">
 
-        <!-- Back Button -->
         <ImageView
             android:id="@+id/btn_genre_back"
             android:layout_width="40dp"
@@ -29,7 +27,6 @@
             android:focusable="true"
             android:contentDescription="Back" />
 
-        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +39,6 @@
             android:fontFamily="@font/poppinsbold"
             android:textStyle="bold" />
 
-        <!-- Icons on Right -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -78,168 +74,33 @@
 
     </RelativeLayout>
 
-    <!-- Scrollable Main Content -->
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
+        android:id="@+id/genre_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genre_toolbar"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:id="@+id/txt_genre_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aksi"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:fontFamily="@font/poppinsbold"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_genre_anime_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/genre_toolbar"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="40dp">
-
-            <!-- Active Genre Title Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingVertical="24dp">
-
-                <TextView
-                    android:id="@+id/txt_genre_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Aksi"
-                    android:textColor="@color/white"
-                    android:textSize="26sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- Section 1: Populer -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    android:id="@+id/lbl_populer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Populer"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/btn_see_all_populer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="Lihat Semua"
-                    android:textColor="#C0C0C0"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="true"
-                    android:focusable="true" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_genre_popular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp" />
-
-            <!-- Section 2: Baru -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp">
-
-                <TextView
-                    android:id="@+id/lbl_baru"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Baru"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/btn_see_all_baru"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="Lihat Semua"
-                    android:textColor="#C0C0C0"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="true"
-                    android:focusable="true" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_genre_new"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp" />
-
-            <!-- Section 3: Rekomendasi/Lainnya -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp">
-
-                <TextView
-                    android:id="@+id/lbl_rekomendasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Rekomendasi Terkait"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/btn_see_all_rekomendasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="Lihat Semua"
-                    android:textColor="#C0C0C0"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="true"
-                    android:focusable="true" />
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_genre_recommend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        android:layout_below="@id/genre_title_container"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="24dp" />
 
 </RelativeLayout>

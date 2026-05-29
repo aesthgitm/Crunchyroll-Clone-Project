@@ -7,7 +7,6 @@
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Video Player Container (Fixed 16:9 ratio approx. 240dp) -->
     <RelativeLayout
         android:id="@+id/player_video_container"
         android:layout_width="match_parent"
@@ -15,224 +14,29 @@
         android:background="#111315"
         android:layout_alignParentTop="true">
 
-        <!-- Actual Video View -->
-        <VideoView
-            android:id="@+id/video_view"
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            app:enableAutomaticInitialization="true" />
 
-        <!-- Black overlay when controls are visible -->
-        <View
-            android:id="@+id/player_controls_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#99000000" />
-
-        <!-- Overlay Controls View -->
-        <RelativeLayout
-            android:id="@+id/player_controls_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- Top Toolbar -->
-            <RelativeLayout
-                android:id="@+id/player_top_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:paddingHorizontal="12dp">
-
-                <!-- Back Arrow -->
-                <ImageView
-                    android:id="@+id/btn_player_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_arrow_back"
-                    android:tint="@color/white"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Back" />
-
-                <!-- Toolbar controls on the right -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <!-- Next Episode Icon button -->
-                    <ImageView
-                        android:id="@+id/btn_player_toolbar_next_ep"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_play"
-                        android:tint="@color/white"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Next Episode" />
-
-                    <!-- Cast Button -->
-                    <ImageView
-                        android:id="@+id/btn_player_cast"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_cast"
-                        android:tint="@color/white"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Chromecast" />
-
-                    <!-- Settings gear -->
-                    <ImageView
-                        android:id="@+id/btn_player_settings"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_settings"
-                        android:tint="@color/white"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Settings" />
-
-                    <!-- Fullscreen/Maximize -->
-                    <ImageView
-                        android:id="@+id/btn_player_fullscreen"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_grid"
-                        android:tint="@color/white"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Fullscreen" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <!-- Center Controls (Rewind 10s, Play/Pause, Forward 10s) -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <!-- Rewind 10s -->
-                <RelativeLayout
-                    android:id="@+id/btn_player_rewind_10"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/bg_circle_bookmark"
-                    android:backgroundTint="#40FFFFFF"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="⟲ 10"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <!-- Big Play/Pause Toggle -->
-                <RelativeLayout
-                    android:id="@+id/btn_player_play_pause"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/bg_circle_bookmark"
-                    android:backgroundTint="#80FFFFFF"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/img_player_play_pause"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_play"
-                        android:tint="@color/white" />
-                </RelativeLayout>
-
-                <!-- Forward 10s -->
-                <RelativeLayout
-                    android:id="@+id/btn_player_forward_10"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginStart="24dp"
-                    android:background="@drawable/bg_circle_bookmark"
-                    android:backgroundTint="#40FFFFFF"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="⟳ 10"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <!-- Bottom Control Info (Seekbar, timers) -->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:paddingBottom="4dp"
-                android:paddingHorizontal="12dp">
-
-                <!-- Current playback time -->
-                <TextView
-                    android:id="@+id/txt_player_current_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:text="0:00"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <!-- Total duration -->
-                <TextView
-                    android:id="@+id/txt_player_total_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:text="0:00"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <!-- SeekBar Progress -->
-                <SeekBar
-                    android:id="@+id/seekbar_player_progress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txt_player_current_time"
-                    android:layout_marginTop="2dp"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="0dp"
-                    android:max="1000"
-                    android:progressTint="@color/color_primary"
-                    android:thumbTint="@color/color_primary"
-                    android:progressBackgroundTint="@color/grey_text_disabled" />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
+        <ImageView
+            android:id="@+id/btn_player_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back" />
+            
     </RelativeLayout>
 
-    <!-- Scrollable content below video player -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -246,7 +50,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Anime Category/Title (Orange) -->
             <TextView
                 android:id="@+id/txt_player_anime_title"
                 android:layout_width="wrap_content"
@@ -257,7 +60,6 @@
                 android:textStyle="bold"
                 android:textAllCaps="true" />
 
-            <!-- Episode Title -->
             <TextView
                 android:id="@+id/txt_player_episode_title"
                 android:layout_width="wrap_content"
@@ -268,7 +70,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Badge / Info metadata row -->
             <TextView
                 android:id="@+id/txt_player_meta_badge"
                 android:layout_width="wrap_content"
@@ -281,7 +82,6 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="11sp" />
 
-            <!-- Engagement Action row (Like, Dislike, Download, More) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -289,7 +89,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- Like Action -->
                 <LinearLayout
                     android:id="@+id/btn_player_like"
                     android:layout_width="wrap_content"
@@ -299,14 +98,12 @@
                     android:focusable="true"
                     android:paddingHorizontal="8dp"
                     android:orientation="horizontal">
-
                     <ImageView
                         android:id="@+id/img_player_like"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_smile"
                         android:tint="@color/white" />
-
                     <TextView
                         android:id="@+id/txt_player_like_count"
                         android:layout_width="wrap_content"
@@ -317,7 +114,6 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <!-- Dislike Action -->
                 <LinearLayout
                     android:id="@+id/btn_player_dislike"
                     android:layout_width="wrap_content"
@@ -327,14 +123,12 @@
                     android:focusable="true"
                     android:paddingHorizontal="16dp"
                     android:orientation="horizontal">
-
                     <ImageView
                         android:id="@+id/img_player_dislike"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_broken_heart"
                         android:tint="@color/white" />
-
                     <TextView
                         android:id="@+id/txt_player_dislike_count"
                         android:layout_width="wrap_content"
@@ -350,7 +144,6 @@
                     android:layout_height="1dp"
                     android:layout_weight="1" />
 
-                <!-- Download Action -->
                 <ImageView
                     android:id="@+id/btn_player_download"
                     android:layout_width="40dp"
@@ -361,7 +154,6 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Download Video" />
 
-                <!-- More Options -->
                 <ImageView
                     android:id="@+id/btn_player_more_options"
                     android:layout_width="40dp"
@@ -371,16 +163,14 @@
                     android:tint="@color/white"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="More Options" />
-
             </LinearLayout>
 
-            <!-- Description -->
             <TextView
                 android:id="@+id/txt_player_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Keterangan deskripsi mengenai episode anime yang dimainkan akan ditampilkan di sini dengan detail..."
+                android:text="Keterangan deskripsi..."
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:lineSpacingMultiplier="1.2" />
@@ -403,7 +193,6 @@
                 android:background="@color/divider_line"
                 android:layout_marginVertical="16dp" />
 
-            <!-- Next Episode Header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -413,7 +202,6 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp" />
 
-            <!-- Next Episode Container (Horizontal Item layout) -->
             <RelativeLayout
                 android:id="@+id/container_next_episode"
                 android:layout_width="match_parent"
@@ -423,7 +211,6 @@
                 android:clickable="true"
                 android:focusable="true">
 
-                <!-- Thumbnail -->
                 <RelativeLayout
                     android:id="@+id/layout_next_ep_thumbnail"
                     android:layout_width="120dp"
@@ -431,7 +218,13 @@
                     android:layout_alignParentStart="true"
                     android:background="#2E3033">
 
-                    <!-- Overlaid play button -->
+                    <ImageView
+                        android:id="@+id/img_next_ep_thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Next Episode Thumbnail" />
+
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -439,8 +232,8 @@
                         android:src="@drawable/ic_play"
                         android:tint="@color/white" />
 
-                    <!-- Duration Badge -->
                     <TextView
+                        android:id="@+id/txt_next_ep_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -454,7 +247,6 @@
                         android:textSize="10sp" />
                 </RelativeLayout>
 
-                <!-- Details next to it -->
                 <TextView
                     android:id="@+id/txt_next_ep_title"
                     android:layout_width="wrap_content"
@@ -468,7 +260,6 @@
                     android:textStyle="bold"
                     android:layout_toStartOf="@+id/btn_next_ep_download" />
 
-                <!-- Download button for next episode -->
                 <ImageView
                     android:id="@+id/btn_next_ep_download"
                     android:layout_width="40dp"
@@ -479,10 +270,8 @@
                     android:src="@drawable/ic_download"
                     android:tint="@color/white"
                     android:background="?attr/selectableItemBackgroundBorderless" />
-
             </RelativeLayout>
 
-            <!-- All Episodes Link -->
             <TextView
                 android:id="@+id/btn_player_all_episodes"
                 android:layout_width="wrap_content"
@@ -496,8 +285,6 @@
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true" />
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </RelativeLayout>

@@ -120,6 +120,7 @@ class RegisterActivity : AppCompatActivity() {
                                 MockData.activeSubscriptionPlan = "Gratis"
                                 
                                 Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+                                NotificationHelper.showSystemNotification(this, "Pendaftaran Sukses!", "Akun Crunchyroll Anda berhasil dibuat.")
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                                 finish()

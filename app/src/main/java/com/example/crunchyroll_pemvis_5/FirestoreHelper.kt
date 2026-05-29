@@ -72,6 +72,32 @@ class FirestoreHelper {
             .addOnFailureListener { e -> onFailure(e) }
     }
 
+    // BARU: Mengambil List Episode Dinamis dari Subcollection Anime
+    fun getEpisodesForAnime(
+        animeId: String, 
+        onSuccess: (List<EpisodeModel>) -> Unit, 
+        onFailure: (Exception) -> Unit
+    ) {
+        db.collection("anime").document(animeId).collection("episodes")
+            .orderBy("number") // Diurutkan berdasarkan nomor episode
+            .get()
+            .addOnSuccessListener { result ->
+                val episodeList = result.map { doc ->
+                    EpisodeModel(
+                        id = doc.id,
+                        number = doc.getLong("number")?.toInt() ?: 1,
+                        name = doc.getString("name") ?: "",
+                        durationRemaining = doc.getString("durationRemaining") ?: "23m",
+                        thumbnailColor = doc.getLong("thumbnailColor")?.toInt() ?: 0,
+                        videoUrl = doc.getString("videoUrl") ?: "",
+                        youtubeVideoId = doc.getString("youtubeVideoId") ?: "" // Mengambil ID Youtube
+                    )
+                }
+                onSuccess(episodeList)
+            }
+            .addOnFailureListener { e -> onFailure(e) }
+    }
+
     // Menambah Anime ke Watchlist (Daftar Tonton)
     fun addToWatchlist(userId: String, animeId: String, onComplete: (Boolean) -> Unit) {
         val watchlistId = "${userId}_${animeId}"
@@ -95,7 +121,7 @@ class FirestoreHelper {
             .addOnFailureListener { onComplete(false) }
     }
 
-    // Mengisi database Firestore secara otomatis (Seeding)
+    // Mengisi database Firestore secara otomatis (Seeding + Subcollection Episodes)
     fun seedAnimeDatabase(onComplete: (Boolean) -> Unit) {
         db.collection("anime").get()
             .addOnSuccessListener { result ->
@@ -139,6 +165,23 @@ class FirestoreHelper {
                             "isSimulcast" to (model.id in listOf("tye", "dsr", "strongest"))
                         )
                         batch.set(docRef, animeData)
+
+                        // SEEDING SUBCOLLECTION EPISODES
+                        // Membuat tiruan data episode di Firestore untuk setiap anime
+                        for (ep in model.episodes) {
+                            val epDocRef = docRef.collection("episodes").document(ep.id)
+                            val epData = mapOf(
+                                "id" to ep.id,
+                                "number" to ep.number,
+                                "name" to ep.name,
+                                "durationRemaining" to ep.durationRemaining,
+                                "thumbnailColor" to ep.thumbnailColor,
+                                "videoUrl" to ep.videoUrl,
+                                // ID default YouTube untuk testing (bisa diganti manual di console firebase nanti)
+                                "youtubeVideoId" to "dQw4w9WgXcQ" 
+                            )
+                            batch.set(epDocRef, epData)
+                        }
                     }
                     batch.commit()
                         .addOnSuccessListener { onComplete(true) }
@@ -151,6 +194,7 @@ class FirestoreHelper {
                 onComplete(false)
             }
     }
+
     // Menambah Anime ke Riwayat Tontonan
     fun addToWatchHistory(userId: String, animeId: String, onComplete: (Boolean) -> Unit) {
         val historyId = "${userId}_${animeId}"
@@ -217,53 +261,19 @@ class FirestoreHelper {
             .addOnFailureListener { e -> onFailure(e) }
     }
 
-    fun getWatchlistAnimeIds(
-        userId: String,
-        onSuccess: (List<String>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        getAnimeIdsFromCollection(
-            collection = "watchlists",
-            userId = userId,
-            animeField = "animeId",
-            onSuccess = onSuccess,
-            onFailure = onFailure
-        )
+    fun getWatchlistAnimeIds(userId: String, onSuccess: (List<String>) -> Unit, onFailure: (Exception) -> Unit) {
+        getAnimeIdsFromCollection("watchlists", userId, "animeId", onSuccess, onFailure)
     }
 
-    fun getWatchHistoryAnimeIds(
-        userId: String,
-        onSuccess: (List<String>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        getAnimeIdsFromCollection(
-            collection = "watch_history",
-            userId = userId,
-            animeField = "animeId",
-            onSuccess = onSuccess,
-            onFailure = onFailure
-        )
+    fun getWatchHistoryAnimeIds(userId: String, onSuccess: (List<String>) -> Unit, onFailure: (Exception) -> Unit) {
+        getAnimeIdsFromCollection("watch_history", userId, "animeId", onSuccess, onFailure)
     }
 
-    fun getDownloadAnimeIds(
-        userId: String,
-        onSuccess: (List<String>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        getAnimeIdsFromCollection(
-            collection = "downloads",
-            userId = userId,
-            animeField = "animeId",
-            onSuccess = onSuccess,
-            onFailure = onFailure
-        )
+    fun getDownloadAnimeIds(userId: String, onSuccess: (List<String>) -> Unit, onFailure: (Exception) -> Unit) {
+        getAnimeIdsFromCollection("downloads", userId, "animeId", onSuccess, onFailure)
     }
 
-    fun getCrunchylistNames(
-        userId: String,
-        onSuccess: (List<String>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
+    fun getCrunchylistNames(userId: String, onSuccess: (List<String>) -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("crunchylists")
             .whereEqualTo("userId", userId)
             .get()
@@ -274,11 +284,7 @@ class FirestoreHelper {
             .addOnFailureListener { e -> onFailure(e) }
     }
 
-    fun getCrunchylistsDetailed(
-        userId: String,
-        onSuccess: (List<CrunchylistModel>) -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
+    fun getCrunchylistsDetailed(userId: String, onSuccess: (List<CrunchylistModel>) -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("crunchylists")
             .whereEqualTo("userId", userId)
             .get()
@@ -323,7 +329,6 @@ class FirestoreHelper {
             .addOnFailureListener { onComplete(false) }
     }
 
-    // Memperbarui Membership/Subscription Type User
     fun updateSubscription(userId: String, planName: String, onComplete: (Boolean) -> Unit) {
         db.collection("users").document(userId)
             .update("membershipType", planName)
@@ -331,15 +336,7 @@ class FirestoreHelper {
             .addOnFailureListener { onComplete(false) }
     }
 
-    // Menambah Review Anime
-    fun addReview(
-        animeId: String,
-        userId: String,
-        username: String,
-        ratingStars: Double,
-        comment: String,
-        onComplete: (Boolean) -> Unit
-    ) {
+    fun addReview(animeId: String, userId: String, username: String, ratingStars: Double, comment: String, onComplete: (Boolean) -> Unit) {
         val reviewId = db.collection("reviews").document().id
         val data = mapOf(
             "reviewId" to reviewId,
@@ -356,7 +353,6 @@ class FirestoreHelper {
             .addOnFailureListener { onComplete(false) }
     }
 
-    // Mengambil Ulasan Anime
     fun getReviews(animeId: String, onSuccess: (List<Map<String, Any>>) -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("reviews")
             .whereEqualTo("animeId", animeId)
@@ -368,4 +364,3 @@ class FirestoreHelper {
             .addOnFailureListener { e -> onFailure(e) }
     }
 }
-

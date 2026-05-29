@@ -8,7 +8,6 @@
     android:focusable="true"
     android:padding="4dp">
 
-    <!-- Thumbnail Container (Left) -->
     <RelativeLayout
         android:id="@+id/thumbnail_container"
         android:layout_width="140dp"
@@ -16,13 +15,14 @@
         android:layout_alignParentStart="true"
         android:background="@drawable/placeholder_poster">
 
-        <!-- Placeholder thumbnail overlay background -->
-        <View
+        <ImageView
+            android:id="@+id/img_episode_thumbnail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2E3136" />
+            android:scaleType="centerCrop"
+            android:background="#2E3136"
+            android:contentDescription="Episode Thumbnail" />
 
-        <!-- Overlay play icon in the center -->
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
@@ -32,7 +32,6 @@
             android:alpha="0.85"
             android:contentDescription="Play Episode" />
 
-        <!-- Progress/Duration Badge (Bottom Right of Thumbnail) -->
         <TextView
             android:id="@+id/txt_progress"
             android:layout_width="wrap_content"
@@ -51,7 +50,6 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- Download Icon (Right) -->
     <ImageView
         android:id="@+id/btn_episode_download"
         android:layout_width="24dp"
@@ -64,7 +62,6 @@
         android:tint="@color/text_secondary"
         android:contentDescription="Download Episode" />
 
-    <!-- Episode Title (Center/Right of Thumbnail) -->
     <TextView
         android:id="@+id/txt_episode_title"
         android:layout_width="match_parent"

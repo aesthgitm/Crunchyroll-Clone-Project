@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL
 
 class HomeBannerAdapter(
     private val bannerList: List<AnimeModel>,
@@ -38,8 +39,13 @@ class HomeBannerAdapter(
         holder.bannerDubSub.text = item.dubSubText
         holder.bannerDescription.text = item.description
 
-        if (item.imageResId != null) {
-            holder.bannerImage.setImageResource(item.imageResId)
+        // SINKRONISASI IMAGE INTERNET: Menampilkan gambar banner utama berukuran besar via internet URL
+        if (item.imageUrl.isNotEmpty()) {
+            holder.bannerImage.load(item.imageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bg_circle_bookmark)
+                error(R.drawable.bg_circle_bookmark)
+            }
         } else {
             holder.bannerImage.setImageResource(android.R.color.transparent)
             holder.bannerImage.setBackgroundColor(item.placeholderColor)
@@ -50,7 +56,6 @@ class HomeBannerAdapter(
         }
 
         holder.btnWatchlist.setOnClickListener {
-            // Can be extended, for now behaves like item click/watchlist addition
             onItemClick(item)
         }
 

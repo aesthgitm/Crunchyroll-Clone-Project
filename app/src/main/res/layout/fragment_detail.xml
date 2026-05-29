@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_main">
 
-    <!-- Scrollable Main Content -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/detail_scroll_view"
         android:layout_width="match_parent"
@@ -18,13 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Banner Header Container -->
             <RelativeLayout
                 android:id="@+id/detail_banner_container"
                 android:layout_width="match_parent"
                 android:layout_height="320dp">
 
-                <!-- Collapsible Header Banner Placeholder -->
                 <ImageView
                     android:id="@+id/detail_banner_image"
                     android:layout_width="match_parent"
@@ -33,7 +30,12 @@
                     android:src="@drawable/placeholder_banner"
                     android:contentDescription="Anime Banner Background" />
 
-                <!-- Text Overlay Content on Banner -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/bg_gradient_scrim" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -42,7 +44,6 @@
                     android:paddingEnd="16dp"
                     android:paddingStart="16dp">
 
-                    <!-- Anime Logo text -->
                     <TextView
                         android:id="@+id/detail_title"
                         android:layout_width="wrap_content"
@@ -53,7 +54,6 @@
                         android:textSize="26sp"
                         android:textStyle="bold" />
 
-                    <!-- Subtitle -->
                     <TextView
                         android:id="@+id/detail_subtitle"
                         android:layout_width="wrap_content"
@@ -68,7 +68,6 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-            <!-- Detailed info Container below banner -->
             <RelativeLayout
                 android:id="@+id/detail_info_container"
                 android:layout_width="match_parent"
@@ -78,7 +77,6 @@
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp">
 
-                <!-- Metadata badges -->
                 <LinearLayout
                     android:id="@+id/badge_row"
                     android:layout_width="wrap_content"
@@ -86,7 +84,6 @@
                     android:layout_centerHorizontal="true"
                     android:orientation="horizontal">
 
-                    <!-- Age Badge -->
                     <TextView
                         android:id="@+id/badge_age"
                         android:layout_width="wrap_content"
@@ -102,7 +99,6 @@
                         android:textSize="11sp"
                         android:textStyle="bold" />
 
-                    <!-- Dubbing / Subtitle badge -->
                     <TextView
                         android:id="@+id/badge_dub"
                         android:layout_width="wrap_content"
@@ -117,7 +113,6 @@
                         android:textSize="11sp" />
                 </LinearLayout>
 
-                <!-- Rating Section -->
                 <RelativeLayout
                     android:id="@+id/rating_row"
                     android:layout_width="wrap_content"
@@ -175,7 +170,6 @@
 
                 </RelativeLayout>
 
-                <!-- Actions (Daftar Saya, Bagikan) -->
                 <LinearLayout
                     android:id="@+id/actions_row"
                     android:layout_width="wrap_content"
@@ -185,7 +179,6 @@
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-                    <!-- Daftar Saya Button -->
                     <LinearLayout
                         android:id="@+id/btn_add_to_list"
                         android:layout_width="wrap_content"
@@ -211,7 +204,6 @@
                             android:textSize="11sp" />
                     </LinearLayout>
 
-                    <!-- Bagikan Button -->
                     <LinearLayout
                         android:id="@+id/btn_share"
                         android:layout_width="wrap_content"
@@ -237,7 +229,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Synopsis Text Description -->
                 <TextView
                     android:id="@+id/detail_description"
                     android:layout_width="match_parent"
@@ -258,7 +249,6 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/divider_line" />
 
-                <!-- Tabs (Episode, Lainnya Seperti Ini) -->
                 <RelativeLayout
                     android:id="@+id/tabs_container"
                     android:layout_width="match_parent"
@@ -276,7 +266,6 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <!-- Active tab orange line underline -->
                     <View
                         android:layout_width="56dp"
                         android:layout_height="2dp"
@@ -285,7 +274,6 @@
 
                 </RelativeLayout>
 
-                <!-- Filter Season Spinner Header Container -->
                 <RelativeLayout
                     android:id="@+id/season_spinner_container"
                     android:layout_width="match_parent"
@@ -295,7 +283,6 @@
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp">
 
-                    <!-- Filter Line -->
                     <ImageView
                         android:id="@+id/btn_sort_episodes"
                         android:layout_width="20dp"
@@ -334,7 +321,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <!-- Episode download button -->
                     <TextView
                         android:id="@+id/btn_download_all_text"
                         android:layout_width="wrap_content"
@@ -358,7 +344,6 @@
 
                 </RelativeLayout>
 
-                <!-- Episode Recyclerview List -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_episodes"
                     android:layout_width="match_parent"
@@ -367,7 +352,6 @@
                     android:layout_marginTop="8dp"
                     android:nestedScrollingEnabled="false" />
 
-                <!-- Divider -->
                 <View
                     android:id="@+id/reviews_divider"
                     android:layout_width="match_parent"
@@ -376,7 +360,6 @@
                     android:layout_marginTop="24dp"
                     android:background="@color/divider_line" />
 
-                <!-- Reviews Title Header -->
                 <TextView
                     android:id="@+id/txt_reviews_header"
                     android:layout_width="wrap_content"
@@ -388,7 +371,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Write a Review Container -->
                 <LinearLayout
                     android:id="@+id/write_review_container"
                     android:layout_width="match_parent"
@@ -407,7 +389,6 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <!-- Rating Selector -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -439,7 +420,6 @@
                             android:rating="5.0" />
                     </LinearLayout>
 
-                    <!-- Comment Input -->
                     <EditText
                         android:id="@+id/edt_review_comment"
                         android:layout_width="match_parent"
@@ -454,7 +434,6 @@
                         android:gravity="top|start"
                         android:inputType="textMultiLine" />
 
-                    <!-- Submit Button -->
                     <Button
                         android:id="@+id/btn_submit_review"
                         android:layout_width="wrap_content"
@@ -471,7 +450,6 @@
 
                 </LinearLayout>
 
-                <!-- Reviews Recyclerview List -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_reviews"
                     android:layout_width="match_parent"
@@ -486,7 +464,6 @@
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Top Sticky Floating Toolbar Bar -->
     <RelativeLayout
         android:id="@+id/detail_top_bar"
         android:layout_width="match_parent"
@@ -494,7 +471,6 @@
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent">
 
-        <!-- Back Button (Arrow or X shape) -->
         <ImageView
             android:id="@+id/btn_detail_back"
             android:layout_width="40dp"
@@ -507,7 +483,6 @@
             android:tint="@color/white"
             android:contentDescription="Go Back" />
 
-        <!-- Overflow options button on right -->
         <ImageView
             android:id="@+id/btn_detail_more"
             android:layout_width="40dp"
@@ -521,7 +496,6 @@
             android:tint="@color/white"
             android:contentDescription="More Options" />
 
-        <!-- Cast TV button -->
         <ImageView
             android:id="@+id/btn_detail_cast"
             android:layout_width="40dp"
@@ -537,7 +511,6 @@
 
     </RelativeLayout>
 
-    <!-- Bottom Sticky Action Play Bar -->
     <RelativeLayout
         android:id="@+id/bottom_sticky_bar"
         android:layout_width="match_parent"
@@ -549,7 +522,6 @@
         android:paddingStart="16dp"
         android:paddingTop="12dp">
 
-        <!-- Resume Play Button (Orange Capsule) -->
         <RelativeLayout
             android:id="@+id/btn_resume_episode"
             android:layout_width="match_parent"
@@ -585,7 +557,6 @@
 
         </RelativeLayout>
 
-        <!-- Save Circular Bordered Bookmark button -->
         <ImageView
             android:id="@+id/btn_detail_bookmark_sticky"
             android:layout_width="48dp"

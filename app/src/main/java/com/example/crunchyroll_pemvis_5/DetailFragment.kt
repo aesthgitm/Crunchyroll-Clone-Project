@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL
 
 class DetailFragment : Fragment() {
 
@@ -66,9 +68,13 @@ class DetailFragment : Fragment() {
         txtRating.text = "Rata-rata: ${currentAnime.ratingStars} (${currentAnime.ratingReviews})"
         txtDescription.text = currentAnime.description
 
-        // Assign background image or placeholder color to banner image
-        if (currentAnime.imageResId != null && currentAnime.imageResId != 0) {
-            imgBanner.setImageResource(currentAnime.imageResId)
+        // FIX DI SINI: Memuat gambar besar banner menggunakan Coil URL dari internet
+        if (currentAnime.imageUrl.isNotEmpty()) {
+            imgBanner.load(currentAnime.imageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bg_circle_bookmark)
+                error(R.drawable.bg_circle_bookmark)
+            }
         } else {
             imgBanner.setImageResource(android.R.color.transparent)
             imgBanner.setBackgroundColor(currentAnime.placeholderColor)
@@ -80,8 +86,6 @@ class DetailFragment : Fragment() {
             btnBookmarkSticky.setImageResource(
                 if (isBookmarked) R.drawable.ic_bookmark_filled else R.drawable.ic_bookmark
             )
-            
-            // If there's an add to list text/icon, we can update it too (or just rely on toast)
         }
         updateBookmarkUI()
 
@@ -150,7 +154,6 @@ class DetailFragment : Fragment() {
 
         // Pinned sticky actions
         btnResume.setOnClickListener {
-            // Add to history when clicking resume/play
             MockData.watchHistory.removeIf { it.id == currentAnime.id }
             MockData.watchHistory.add(0, currentAnime)
 

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL
 
 class AnimePosterAdapter(
     private var animeList: List<AnimeModel>,
@@ -32,9 +33,13 @@ class AnimePosterAdapter(
         holder.posterTitle.text = item.title
         holder.posterSubtitle.text = item.dubSubText
         
-        // Bind actual image resource if available, otherwise fallback to placeholder color
-        if (item.imageResId != null) {
-            holder.posterImage.setImageResource(item.imageResId)
+        // SINKRONISASI IMAGE INTERNET: Memasang URL Gambar ke adapter list horizontal
+        if (item.imageUrl.isNotEmpty()) {
+            holder.posterImage.load(item.imageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bg_circle_bookmark)
+                error(R.drawable.bg_circle_bookmark)
+            }
             holder.posterImageContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         } else {
             holder.posterImage.setImageResource(android.R.color.transparent)

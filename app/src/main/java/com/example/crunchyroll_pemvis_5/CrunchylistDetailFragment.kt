@@ -12,6 +12,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL
 
 class CrunchylistDetailFragment : Fragment() {
     private var crunchylistId: String = ""
@@ -76,7 +77,6 @@ class CrunchylistDetailFragment : Fragment() {
     }
 
     private fun showListMenu(anchor: View) {
-        val list = crunchylist ?: return
         val popup = PopupMenu(requireContext(), anchor)
         popup.menu.add("Ganti Nama Crunchylist")
         popup.menu.add("Hapus Crunchylist")
@@ -180,12 +180,19 @@ class CrunchylistDetailFragment : Fragment() {
             val anime = items[position]
             holder.txtTitle.text = anime.title
             holder.txtSubtitle.text = anime.dubSubText
-            if (anime.imageResId != null && anime.imageResId != 0) {
-                holder.imgPoster.setImageResource(anime.imageResId)
+            
+            // FIX DI SINI: Mengubah pemuatan gambar item Crunchylist list agar membaca URL via Coil
+            if (anime.imageUrl.isNotEmpty()) {
+                holder.imgPoster.load(anime.imageUrl) {
+                    crossfade(true)
+                    placeholder(R.drawable.bg_circle_bookmark)
+                    error(R.drawable.bg_circle_bookmark)
+                }
             } else {
                 holder.imgPoster.setImageResource(android.R.color.transparent)
                 holder.imgPoster.setBackgroundColor(anime.placeholderColor)
             }
+            
             holder.itemView.setOnClickListener { onItemClick(anime) }
             holder.btnMore.setOnClickListener { view ->
                 val popup = PopupMenu(view.context, view)

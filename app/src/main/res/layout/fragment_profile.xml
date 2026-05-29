@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Top Header section with Orange Gradient -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
             android:paddingTop="32dp"
             android:paddingBottom="24dp">
 
-            <!-- Circular Avatar container with edit badge -->
             <RelativeLayout
                 android:id="@+id/layout_avatar_container"
                 android:layout_width="wrap_content"
@@ -31,7 +29,6 @@
                 android:focusable="true"
                 android:background="?attr/selectableItemBackgroundBorderless">
 
-                <!-- Main Avatar Circle -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/avatar_card"
                     android:layout_width="88dp"
@@ -41,14 +38,15 @@
                     app:cardBackgroundColor="#FF6400">
 
                     <ImageView
-                        android:layout_width="54dp"
-                        android:layout_height="54dp"
+                        android:id="@+id/img_main_profile_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/ic_account"
                         app:tint="@color/white" />
                 </androidx.cardview.widget.CardView>
 
-                <!-- Small Floating Edit Pencil Circle -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
@@ -68,7 +66,6 @@
 
             </RelativeLayout>
 
-            <!-- Profile Name -->
             <TextView
                 android:id="@+id/txt_profile_name"
                 android:layout_width="wrap_content"
@@ -81,7 +78,6 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/poppinsbold" />
 
-            <!-- Username -->
             <TextView
                 android:id="@+id/txt_profile_username"
                 android:layout_width="wrap_content"
@@ -96,14 +92,12 @@
 
         </RelativeLayout>
 
-        <!-- Preference Section 1: Account Management -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp">
 
-            <!-- Beralih Profil -->
             <LinearLayout
                 android:id="@+id/row_switch_profile"
                 android:layout_width="match_parent"
@@ -142,7 +136,44 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Pin Profil -->
+            <LinearLayout
+                android:id="@+id/row_add_profile"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/white"
+                    android:layout_marginEnd="16dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tambah Profil Baru"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsbold" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="#8E9297" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#22FFFFFF" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -178,7 +209,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Pembatasan Konten -->
             <LinearLayout
                 android:id="@+id/row_content_restriction"
                 android:layout_width="match_parent"
@@ -224,21 +254,18 @@
 
         </LinearLayout>
 
-        <!-- Divider Space -->
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:background="#1B1C22"
             android:layout_marginVertical="8dp" />
 
-        <!-- Preference Section 2: Audio & Subtitles -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp">
 
-            <!-- Bahasa Audio -->
             <LinearLayout
                 android:id="@+id/row_audio_language"
                 android:layout_width="match_parent"
@@ -287,7 +314,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Deskripsi Audio -->
             <LinearLayout
                 android:id="@+id/row_audio_description"
                 android:layout_width="match_parent"
@@ -336,7 +362,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Bahasa Takarir / CC -->
             <LinearLayout
                 android:id="@+id/row_subtitle_language"
                 android:layout_width="match_parent"
@@ -385,7 +410,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Takarir Tertutup (CC) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -418,21 +442,18 @@
 
         </LinearLayout>
 
-        <!-- Divider Space -->
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:background="#1B1C22"
             android:layout_marginVertical="8dp" />
 
-        <!-- Preference Section 3: Subscriptions & General Settings -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp">
 
-            <!-- Paket Keanggotaan -->
             <LinearLayout
                 android:id="@+id/row_subscription"
                 android:layout_width="match_parent"
@@ -481,7 +502,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Notifikasi -->
             <LinearLayout
                 android:id="@+id/row_notifications"
                 android:layout_width="match_parent"
@@ -520,7 +540,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Ubah Email -->
             <LinearLayout
                 android:id="@+id/row_profile_email"
                 android:layout_width="match_parent"
@@ -569,7 +588,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Ubah Kata Sandi -->
             <LinearLayout
                 android:id="@+id/row_change_password"
                 android:layout_width="match_parent"
@@ -605,21 +623,18 @@
 
         </LinearLayout>
 
-        <!-- Divider Space -->
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:background="#1B1C22"
             android:layout_marginVertical="8dp" />
 
-        <!-- Preference Section 4: Advanced App Settings -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp">
 
-            <!-- Streaming dengan Seluler Switch -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -655,7 +670,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Unduh dengan Seluler Switch -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -691,7 +705,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Kualitas Unduhan -->
             <LinearLayout
                 android:id="@+id/row_download_quality"
                 android:layout_width="match_parent"
@@ -737,21 +750,18 @@
 
         </LinearLayout>
 
-        <!-- Divider Space -->
         <View
             android:layout_width="match_parent"
             android:layout_height="16dp"
             android:background="#1B1C22"
             android:layout_marginVertical="8dp" />
 
-        <!-- Preference Section 5: Privacy, Support, Danger zone -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp">
 
-            <!-- Kebijakan Privasi -->
             <LinearLayout
                 android:id="@+id/row_privacy"
                 android:layout_width="match_parent"
@@ -790,7 +800,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Pusat Bantuan -->
             <LinearLayout
                 android:id="@+id/row_help"
                 android:layout_width="match_parent"
@@ -829,7 +838,6 @@
                 android:layout_height="1dp"
                 android:background="#22FFFFFF" />
 
-            <!-- Hapus Akun -->
             <LinearLayout
                 android:id="@+id/row_delete_account"
                 android:layout_width="match_parent"
@@ -865,7 +873,6 @@
 
         </LinearLayout>
 
-        <!-- Keluar Button at the very bottom -->
         <TextView
             android:id="@+id/btn_profile_logout"
             android:layout_width="match_parent"

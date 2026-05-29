@@ -51,4 +51,6 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation(libs.youtube.player)
+    implementation("io.coil-kt:coil:2.6.0")
 }

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL UNTUK MEMUAT GAMBAR INTERNET
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class TelusuriTabContentFragment : Fragment() {
@@ -149,7 +150,7 @@ class TelusuriTabContentFragment : Fragment() {
                         }
                         Toast.makeText(context, "Ditandai sebagai sudah ditonton: ${anime.title}", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Ditandai sebagai sudah ditonton: $title", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Ditandai as sudah ditonton: $title", Toast.LENGTH_SHORT).show()
                     }
                     true
                 }
@@ -178,7 +179,6 @@ class TelusuriTabContentFragment : Fragment() {
 
         var displayList = MockData.allAnime.toMutableList()
 
-        // Apply Genre / Type / Lang Filter
         if (MockData.selectedGenreFilter != "Semua") {
             displayList = when (MockData.selectedGenreFilter) {
                 "Movie" -> displayList.filter { it.subtitle.contains("Movie", ignoreCase = true) }.toMutableList()
@@ -192,7 +192,6 @@ class TelusuriTabContentFragment : Fragment() {
             }
         }
 
-        // Apply Sort Option
         when (MockData.selectedSortOption) {
             "A-Z" -> displayList.sortBy { it.title }
             "Z-A" -> displayList.sortByDescending { it.title }
@@ -269,20 +268,15 @@ class TelusuriTabContentFragment : Fragment() {
         }
     }
 
+    // ========================================================================
+    // FIX DI SINI: MENGATUR 3 GENRE DAN MEMUAT POSTER SEBAGAI BACKGROUND CARD
+    // ========================================================================
     private fun setupGenreAnime(view: View) {
+        // 1. Definisikan peta klik hanya untuk 3 genre utama (Aksi, Drama, Romantis)
         val genresMap = mapOf(
             R.id.genre_aksi to Pair("Aksi", "🔥"),
-            R.id.genre_petualangan to Pair("Petualangan", "🧭"),
-            R.id.genre_komedi to Pair("Komedi", "😂"),
             R.id.genre_drama to Pair("Drama", "🎭"),
-            R.id.genre_fantasi to Pair("Fantasi", "🦄"),
-            R.id.genre_musik to Pair("Musik", "🎵"),
-            R.id.genre_romansa to Pair("Romansa", "💖"),
-            R.id.genre_fiksi_ilmiah to Pair("Fiksi Ilmiah", "🚀"),
-            R.id.genre_seinen to Pair("Seinen", "⚔️"),
-            R.id.genre_shoujo to Pair("Shoujo", "🌸"),
-            R.id.genre_shounen to Pair("Shounen", "⚡"),
-            R.id.genre_slice_of_life to Pair("Penggalan Kehidupan", "🍃")
+            R.id.genre_romansa to Pair("Romantis", "💖") // Key "Romantis" digunakan agar sinkron dengan filter MockData
         )
 
         for ((id, info) in genresMap) {
@@ -291,6 +285,31 @@ class TelusuriTabContentFragment : Fragment() {
                     .replace(R.id.fragment_container, GenreDetailFragment.newInstance(info.first, info.second))
                     .addToBackStack(null)
                     .commit()
+            }
+        }
+
+        // 2. Muat gambar anime pertama secara otomatis dari pangkalan data genre menggunakan Coil
+        val imgAksi = view.findViewById<ImageView>(R.id.img_genre_aksi)
+        val aksiAnime = MockData.animeByGenre["Aksi"]?.firstOrNull()
+        if (imgAksi != null && aksiAnime != null && aksiAnime.imageUrl.isNotEmpty()) {
+            imgAksi.load(aksiAnime.imageUrl) {
+                crossfade(true)
+            }
+        }
+
+        val imgDrama = view.findViewById<ImageView>(R.id.img_genre_drama)
+        val dramaAnime = MockData.animeByGenre["Drama"]?.firstOrNull()
+        if (imgDrama != null && dramaAnime != null && dramaAnime.imageUrl.isNotEmpty()) {
+            imgDrama.load(dramaAnime.imageUrl) {
+                crossfade(true)
+            }
+        }
+
+        val imgRomansa = view.findViewById<ImageView>(R.id.img_genre_romansa)
+        val romansaAnime = MockData.animeByGenre["Romantis"]?.firstOrNull()
+        if (imgRomansa != null && romansaAnime != null && romansaAnime.imageUrl.isNotEmpty()) {
+            imgRomansa.load(romansaAnime.imageUrl) {
+                crossfade(true)
             }
         }
     }
@@ -303,7 +322,7 @@ class TelusuriTabContentFragment : Fragment() {
         val artists = listOf(R.id.artist_1, R.id.artist_2, R.id.artist_3, R.id.artist_4, R.id.artist_5)
         for ((index, id) in artists.withIndex()) {
             view.findViewById<LinearLayout>(id)?.setOnClickListener {
-                Toast.makeText(context, "Membuka detail artis ke-${index + 1}...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Membak detail artis ke-${index + 1}...", Toast.LENGTH_SHORT).show()
             }
         }
     }

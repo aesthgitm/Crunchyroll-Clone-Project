@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import coil.load // IMPORT COIL
 
 class AnimeListAdapter(
     private var animeList: List<AnimeModel>,
@@ -35,8 +36,13 @@ class AnimeListAdapter(
         holder.gridTitle.text = item.title
         holder.gridSubtitle.text = item.dubSubText
 
-        if (item.imageResId != null && item.imageResId != 0) {
-            holder.gridImage.setImageResource(item.imageResId)
+        // SINKRONISASI IMAGE INTERNET: Memuat tautan URL gambar asli spreadsheet lewat internet
+        if (item.imageUrl.isNotEmpty()) {
+            holder.gridImage.load(item.imageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bg_circle_bookmark) // Gambar sementara loading
+                error(R.drawable.bg_circle_bookmark) // Gambar cadangan jika internet putus
+            }
             holder.gridCard.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         } else {
             holder.gridImage.setImageResource(android.R.color.transparent)
