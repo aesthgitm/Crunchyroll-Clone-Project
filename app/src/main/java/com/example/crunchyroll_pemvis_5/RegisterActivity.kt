@@ -10,7 +10,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+// import android.widget.Toast // Removed in favor of AppNotifier
 import com.google.firebase.auth.FirebaseAuth
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -119,20 +119,20 @@ class RegisterActivity : AppCompatActivity() {
                                 MockData.userPassword = password
                                 MockData.activeSubscriptionPlan = "Gratis"
                                 
-                                Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show()
+                                AppNotifier.show(this, "Pendaftaran berhasil!")
                                 NotificationHelper.showSystemNotification(this, "Pendaftaran Sukses!", "Akun Crunchyroll Anda berhasil dibuat.")
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             } else {
                                 btnbuatakun.isEnabled = true
-                                Toast.makeText(this, "Gagal menyimpan data profil ke database.", Toast.LENGTH_SHORT).show()
+                                AppNotifier.show(this, "Gagal menyimpan data profil ke database.")
                             }
                         }
                     } else {
                         btnbuatakun.isEnabled = true
                         val errorMsg = task.exception?.localizedMessage ?: "Pendaftaran gagal"
-                        Toast.makeText(this, "Error: $errorMsg", Toast.LENGTH_LONG).show()
+                        AppNotifier.show(this, "Error: $errorMsg")
                     }
                 }
         }

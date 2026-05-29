@@ -9,7 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+// import android.widget.Toast // Removed in favor of AppNotifier
+import com.example.crunchyroll_pemvis_5.AppNotifier // Optional import, same package so can be omitted
 import com.google.firebase.auth.FirebaseAuth
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -116,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
                                     MockData.profileName = MockData.profileUsername
                                     MockData.userPassword = password
                                 }
-                                Toast.makeText(this, "Berhasil masuk!", Toast.LENGTH_SHORT).show()
+                                AppNotifier.show(this, "Berhasil masuk!")
                                 NotificationHelper.showSystemNotification(this, "Selamat Datang!", "Berhasil masuk sebagai ${MockData.profileUsername}")
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
@@ -128,7 +129,7 @@ class LoginActivity : AppCompatActivity() {
                                 MockData.profileName = MockData.profileUsername
                                 MockData.userPassword = password
                                 
-                                Toast.makeText(this, "Masuk berhasil!", Toast.LENGTH_SHORT).show()
+                                AppNotifier.show(this, "Masuk berhasil!")
                                 NotificationHelper.showSystemNotification(this, "Selamat Datang!", "Berhasil masuk sebagai ${MockData.profileUsername} (Offline)")
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
@@ -138,7 +139,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         btnlogin.isEnabled = true
                         val errorMsg = task.exception?.localizedMessage ?: "Masuk gagal"
-                        Toast.makeText(this, "Error: $errorMsg", Toast.LENGTH_LONG).show()
+                        AppNotifier.show(this, "Error: $errorMsg")
                     }
                 }
         }

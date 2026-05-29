@@ -2,14 +2,30 @@ package com.example.crunchyroll_pemvis_5
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 
 class SimulcastFragment : Fragment() {
+
+    private lateinit var txtSelectedSeason: TextView
+    private lateinit var rvSimulcastAnime: RecyclerView
+    private lateinit var txtSimulcastEmpty: TextView
+
+    // FIX KATEGORI: Mengganti daftar menjadi Simulcast 2026 Season 1 - 4
+    private val seasonsList = listOf(
+        "Simulcast 2026 Season 1",
+        "Simulcast 2026 Season 2",
+        "Simulcast 2026 Season 3",
+        "Simulcast 2026 Season 4"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,9 +38,13 @@ class SimulcastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Header Cast and Search buttons
+        txtSelectedSeason = view.findViewById(R.id.txt_selected_season)
+        rvSimulcastAnime = view.findViewById(R.id.rv_simulcast_anime)
+        txtSimulcastEmpty = view.findViewById(R.id.txt_simulcast_empty)
+
         val btnCast = view.findViewById<ImageView>(R.id.btn_cast)
         val btnSearch = view.findViewById<ImageView>(R.id.btn_search)
+        val btnSeasonDropdown = view.findViewById<LinearLayout>(R.id.btn_season_dropdown)
 
         btnCast.setOnClickListener {
             Toast.makeText(context, "Menghubungkan ke perangkat Cast...", Toast.LENGTH_SHORT).show()
@@ -34,40 +54,61 @@ class SimulcastFragment : Fragment() {
             (activity as? MainActivity)?.openSearchFragment()
         }
 
-        // Season Dropdown click
-        view.findViewById<LinearLayout>(R.id.btn_season_dropdown)?.setOnClickListener {
-            Toast.makeText(context, "Membuka daftar pilihan musim Simulcast...", Toast.LENGTH_SHORT).show()
+        // Ambil data season aktif dari MockData
+        txtSelectedSeason.text = MockData.selectedSimulcastSeason
+        filterAnimeBySeason(MockData.selectedSimulcastSeason)
+
+        btnSeasonDropdown?.setOnClickListener { anchorView ->
+            showSeasonPopupMenu(anchorView)
+        }
+    }
+
+    private fun showSeasonPopupMenu(anchor: View) {
+        val popup = PopupMenu(requireContext(), anchor)
+
+        seasonsList.forEachIndexed { index, seasonName ->
+            popup.menu.add(Menu.NONE, index, Menu.NONE, seasonName)
         }
 
-        // Anime cards click configurations
-        val itemsMap = mapOf(
-            R.id.item_gachiakuta to "Gachiakuta",
-            R.id.item_shield_hero to "The Rising of the Shield Hero",
-            R.id.item_dress_up to "My Dress-Up Darling",
-            R.id.item_dan_da_dan to "DAN DA DAN",
-            R.id.item_solo_leveling to "Solo Leveling",
-            R.id.item_demon_slayer to "Demon Slayer"
-        )
+        popup.setOnMenuItemClickListener { menuItem ->
+            val chosenSeason = seasonsList[menuItem.itemId]
 
-        for ((id, title) in itemsMap) {
-            view.findViewById<LinearLayout>(id)?.setOnClickListener {
-                Toast.makeText(context, "Membuka halaman detail anime: $title", Toast.LENGTH_SHORT).show()
+            txtSelectedSeason.text = chosenSeason
+            MockData.selectedSimulcastSeason = chosenSeason
+
+            filterAnimeBySeason(chosenSeason)
+            true
+        }
+        popup.show()
+    }
+
+    private fun filterAnimeBySeason(season: String) {
+        // FIX LOGIKA FILTER: Disesuaikan dengan nama kategori season yang baru
+        val filteredList = when (season) {
+            "Simulcast 2026 Season 1" -> {
+                MockData.allAnime.filter { it.id in listOf("jujutsu_kaisen", "my_hero_academia", "solo-leveling", "tokyo_revengers") }
             }
+            "Simulcast 2026 Season 2" -> {
+                MockData.allAnime.filter { it.id in listOf("attack_on_titan", "classroom_elite", "horimiya") }
+            }
+            "Simulcast 2026 Season 3" -> {
+                MockData.allAnime.filter { it.id in listOf("your_name", "dr_stone", "fruits_basket") }
+            }
+            "Simulcast 2026 Season 4" -> {
+                MockData.allAnime.filter { it.id in listOf("my_dress_up_darling", "rent_girlfriend", "your_lie_in_april") }
+            }
+            else -> emptyList()
         }
 
-        // Options three dots
-        val dotsMap = mapOf(
-            R.id.more_dots_s1 to "Gachiakuta",
-            R.id.more_dots_s2 to "The Rising of the Shield Hero",
-            R.id.more_dots_s3 to "My Dress-Up Darling",
-            R.id.more_dots_s4 to "DAN DA DAN",
-            R.id.more_dots_s5 to "Solo Leveling",
-            R.id.more_dots_s6 to "Demon Slayer"
-        )
+        if (filteredList.isEmpty()) {
+            txtSimulcastEmpty.visibility = View.VISIBLE
+            rvSimulcastAnime.visibility = View.GONE
+        } else {
+            txtSimulcastEmpty.visibility = View.GONE
+            rvSimulcastAnime.visibility = View.VISIBLE
 
-        for ((id, title) in dotsMap) {
-            view.findViewById<ImageView>(id)?.setOnClickListener {
-                Toast.makeText(context, "Pilihan lainnya untuk: $title", Toast.LENGTH_SHORT).show()
+            rvSimulcastAnime.adapter = AnimeListAdapter(filteredList) { selectedAnime ->
+                (activity as? MainActivity)?.openDetailFragment(selectedAnime)
             }
         }
     }

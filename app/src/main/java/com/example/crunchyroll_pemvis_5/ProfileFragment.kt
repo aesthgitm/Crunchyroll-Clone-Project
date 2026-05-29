@@ -7,7 +7,7 @@ import android.view.View
 import         android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+// import android.widget.Toast // Removed in favor of AppNotifier
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
             // Update foto profile aktif di database MockData
             MockData.activeProfile?.avatarUri = uri.toString()
             updateProfileUI()
-            Toast.makeText(context, "Foto profil berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+            AppNotifier.showToast(requireContext(), "Foto profil berhasil diperbarui!")
         }
     }
 
@@ -146,7 +146,7 @@ class ProfileFragment : Fragment() {
         }
 
         rowNotifications.setOnClickListener {
-            Toast.makeText(context, "Membuka pengaturan notifikasi...", Toast.LENGTH_SHORT).show()
+            AppNotifier.show(view, "Membuka pengaturan notifikasi...")
         }
         rowChangePassword.setOnClickListener {
             navigateToFragment(ChangePasswordFragment())
@@ -158,7 +158,7 @@ class ProfileFragment : Fragment() {
             navigateToFragment(PrivacyDoNotSellFragment())
         }
         rowHelp.setOnClickListener {
-            Toast.makeText(context, "Membuka Pusat Bantuan...", Toast.LENGTH_SHORT).show()
+            AppNotifier.show(view, "Membuka Pusat Bantuan...")
         }
         rowDeleteAccount.setOnClickListener {
             navigateToFragment(DeleteAccountFragment())

@@ -51,8 +51,10 @@ class CrunchylistDetailFragment : Fragment() {
         view.findViewById<View>(R.id.btn_crunchylist_menu).setOnClickListener { anchor ->
             showListMenu(anchor)
         }
+
+        // FIX ACTION: Diubah agar mengarah ke Fragment pencarian anime baru yang premium
         view.findViewById<View>(R.id.btn_add_anime_to_crunchylist).setOnClickListener {
-            showAddAnimeDialog(view)
+            openAddAnimeFragment()
         }
 
         rvItems.layoutManager = LinearLayoutManager(context)
@@ -123,27 +125,15 @@ class CrunchylistDetailFragment : Fragment() {
         activity?.supportFragmentManager?.popBackStack()
     }
 
-    private fun showAddAnimeDialog(rootView: View) {
+    // FIX LOGIKA: Fungsi Dialog Lama dihapus & diganti dengan pemanggilan Fragment Tambah Anime Premium
+    private fun openAddAnimeFragment() {
         val list = crunchylist ?: return
-        val candidates = MockData.allAnime.filterNot { list.animeIds.contains(it.id) }
-        if (candidates.isEmpty()) {
-            AppNotifier.show(rootView, "Semua anime sudah ada di list")
-            return
-        }
-        val titles = candidates.map { it.title }.toTypedArray()
-        AlertDialog.Builder(requireContext())
-            .setTitle("Tambah Anime")
-            .setItems(titles) { _, which ->
-                val chosen = candidates[which]
-                list.animeIds.add(chosen.id)
-                val userId = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser?.uid ?: ""
-                if (userId.isNotEmpty()) {
-                    FirestoreHelper().addAnimeToCrunchylist(list.id, chosen.id) { }
-                }
-                AppNotifier.show(rootView, "${chosen.title} ditambahkan")
-                bindData(rootView)
-            }
-            .show()
+
+        // Membuka halaman AddAnimeCrunchylistFragment dengan mengirimkan nama playlist aktif
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, AddAnimeCrunchylistFragment.newInstance(list.name))
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun removeAnimeFromList(rootView: View, animeId: String) {
@@ -180,8 +170,7 @@ class CrunchylistDetailFragment : Fragment() {
             val anime = items[position]
             holder.txtTitle.text = anime.title
             holder.txtSubtitle.text = anime.dubSubText
-            
-            // FIX DI SINI: Mengubah pemuatan gambar item Crunchylist list agar membaca URL via Coil
+
             if (anime.imageUrl.isNotEmpty()) {
                 holder.imgPoster.load(anime.imageUrl) {
                     crossfade(true)
@@ -192,7 +181,7 @@ class CrunchylistDetailFragment : Fragment() {
                 holder.imgPoster.setImageResource(android.R.color.transparent)
                 holder.imgPoster.setBackgroundColor(anime.placeholderColor)
             }
-            
+
             holder.itemView.setOnClickListener { onItemClick(anime) }
             holder.btnMore.setOnClickListener { view ->
                 val popup = PopupMenu(view.context, view)

@@ -36,7 +36,7 @@ object MockData {
     var userPassword: String = "password123"
     var selectedSortOption: String = "Terbaru"
     var selectedGenreFilter: String = "Semua"
-    var selectedSimulcastSeason: String = "Musim Dingin 2026"
+    var selectedSimulcastSeason: String = "Simulcast 2026 Season 1"
     
     val watchlist = mutableListOf<AnimeModel>()
     val watchHistory = mutableListOf<AnimeModel>()

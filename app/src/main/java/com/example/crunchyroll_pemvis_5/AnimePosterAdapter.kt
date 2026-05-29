@@ -63,13 +63,13 @@ class AnimePosterAdapter(
                     "Tambahkan ke Daftar Tonton" -> {
                         val isBookmarked = MockData.watchlist.any { it.id == item.id }
                         if (isBookmarked) {
-                            Toast.makeText(context, "${item.title} sudah di Daftar Tonton", Toast.LENGTH_SHORT).show()
+                            AppNotifier.showToast(context, "${item.title} sudah di Daftar Tonton")
                         } else {
                             MockData.watchlist.add(item)
                             if (userId.isNotEmpty()) {
                                 FirestoreHelper().addToWatchlist(userId, item.id) { }
                             }
-                            Toast.makeText(context, "${item.title} ditambahkan ke Daftar Tonton", Toast.LENGTH_SHORT).show()
+                            AppNotifier.showToast(context, "${item.title} ditambahkan ke Daftar Tonton")
                         }
                     }
                     "Tonton Sekarang" -> {
@@ -78,10 +78,10 @@ class AnimePosterAdapter(
                         if (userId.isNotEmpty()) {
                             FirestoreHelper().addToWatchHistory(userId, item.id) { }
                         }
-                        Toast.makeText(context, "Memutar: ${item.title}", Toast.LENGTH_SHORT).show()
+                        AppNotifier.showToast(context, "Memutar: ${item.title}")
                     }
                     "Bagikan" -> {
-                        Toast.makeText(context, "Membagikan ${item.title}...", Toast.LENGTH_SHORT).show()
+                        AppNotifier.showToast(context, "Membagikan ${item.title}...")
                     }
                     "Tandai sebagai Sudah Ditonton" -> {
                         MockData.watchHistory.removeIf { it.id == item.id }
@@ -89,7 +89,7 @@ class AnimePosterAdapter(
                         if (userId.isNotEmpty()) {
                             FirestoreHelper().addToWatchHistory(userId, item.id) { }
                         }
-                        Toast.makeText(context, "Ditandai sebagai sudah ditonton: ${item.title}", Toast.LENGTH_SHORT).show()
+                        AppNotifier.showToast(context, "Ditandai sebagai sudah ditonton: ${item.title}")
                     }
                 }
                 true
